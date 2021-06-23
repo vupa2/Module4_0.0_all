@@ -1,0 +1,10 @@
+<h1>Rating Bar</h1>
+<div *ngIf="showRatingValue" class="my-3">
+  {{ ratingValue }}
+</div>
+
+<div class="rating-bar d-flex justify-content-center" (mouseleave)="leave()">
+  <div class="rating-unit" [class.active-rate]="item.active" *ngFor="let item of ratingUnits; let i = index" (mouseenter)="enter(i)" (click)="select(i)">
+    {{ item.value }}
+  </div>
+</div>

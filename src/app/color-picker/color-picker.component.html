@@ -1,0 +1,34 @@
+<div
+  class="
+    w-50
+    mx-auto
+    d-flex
+    text-dark
+    justify-content-center
+    align-items-center
+  "
+  [style.backgroundColor]="bgColor"
+  style="height: 500px"
+>
+  <div
+    class="bg-danger d-flex justify-content-center align-items-center me-3"
+    style="width: 80px; height: 80px; cursor: pointer"
+    (click)="changeBgColor($event)"
+  >
+    Red
+  </div>
+  <div
+    class="bg-warning d-flex justify-content-center align-items-center me-3"
+    style="width: 80px; height: 80px; cursor: pointer"
+    (click)="changeBgColor($event)"
+  >
+    Yellow
+  </div>
+  <div
+    class="bg-success d-flex justify-content-center align-items-center me-3"
+    style="width: 80px; height: 80px; cursor: pointer"
+    (click)="changeBgColor($event)"
+  >
+    Green
+  </div>
+</div>

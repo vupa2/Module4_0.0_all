@@ -1,0 +1,28 @@
+<h1 class="mb-3">Tạo sản phẩm mới</h1>
+
+<form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+  <table class="mx-auto">
+    <tbody>
+      <tr>
+        <td class="form-label">Mã sản phẩm:</td>
+        <td><input type="number" formControlName="id"></td>
+      </tr>
+      <tr>
+        <td class="form-label">Tên sản phẩm:</td>
+        <td><input type="text" formControlName="name"></td>
+      </tr>
+      <tr>
+        <td class="form-label">Giá sản phẩm</td>
+        <td><input type="number" formControlName="price"></td>
+      </tr>
+      <tr>
+        <td class="form-label">Mô tả về sản phẩm</td>
+        <td><input type="text" formControlName="description"></td>
+      </tr>
+      <tr>
+        <td class="form-label"></td>
+        <td><button class="btn btn-primary">Tạo mới</button></td>
+      </tr>
+    </tbody>
+  </table>
+</form>

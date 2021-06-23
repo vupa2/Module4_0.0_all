@@ -1,0 +1,110 @@
+<form class="w-50 mx-auto row" [formGroup]="registerForm" (ngSubmit)="register()" autocomplete="off">
+
+  <div class="col-md-6">
+    <div class="mb-3">
+      <label class="form-label" for="email">Email</label>
+      <input id="email" class="form-control" [class.is-invalid]="email?.invalid && (email?.dirty || email?.touched)"
+        type="email" formControlName="email">
+
+      <div class="invalid-feedback" *ngIf="email?.hasError('required')">
+        Required
+      </div>
+      <div class="invalid-feedback" *ngIf="email?.hasError('email')">
+        Must be an email
+      </div>
+
+    </div>
+    <div class="mb-3">
+      <label class="form-label" for="password">Password</label>
+      <input id="password" class="form-control"
+        [class.is-invalid]="password?.invalid && (password?.dirty || password?.touched)" type="password"
+        formControlName="password">
+
+      <div class="invalid-feedback" *ngIf="password?.hasError('required')">
+        Required
+      </div>
+      <div class="invalid-feedback" *ngIf="password?.hasError('minlength')">
+        Must be at least than 6 characters
+      </div>
+
+    </div>
+    <div class="mb-3">
+      <label class="form-label" for="confirmPassword">Confirm Password</label>
+      <input id="confirmPassword" class="form-control"
+        [class.is-invalid]="(confirmPassword?.invalid || registerForm.hasError('notMatchedPass')) && (confirmPassword?.dirty || confirmPassword?.touched)"
+        type="password" formControlName="confirmPassword">
+
+      <div class="invalid-feedback" *ngIf="confirmPassword?.hasError('required')">
+        Required
+      </div>
+      <div class="invalid-feedback" *ngIf="confirmPassword?.hasError('passwordMatching')">
+        Must be at least than 6 characters
+      </div>
+      <div class="invalid-feedback" *ngIf="registerForm.hasError('notMatchedPass')">
+        Password must match
+      </div>
+
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <div class="mb-3">
+      <label class="form-label" for="country">Country</label>
+      <select id="country" class="form-select" formControlName="country"
+        [class.is-invalid]="country?.invalid && (country?.dirty || country?.touched)">
+        <option value="vn">Vietnam</option>
+        <option value="ger">Germany</option>
+        <option value="frn">France</option>
+      </select>
+
+      <div class="invalid-feedback" *ngIf="country?.hasError('required')">
+        Required
+      </div>
+    </div>
+    <div class="mb-3">
+      <label class="form-label" for="age">Age</label>
+      <input id="age" class="form-control" type="number" formControlName="age"
+        [class.is-invalid]="age?.invalid && (age?.dirty || age?.touched)">
+
+      <div class="invalid-feedback" *ngIf="age?.hasError('required')">
+        Required
+      </div>
+      <div class="invalid-feedback" *ngIf="age?.hasError('min')">
+        Must be older than 18 years old
+      </div>
+    </div>
+    <div class="mb-3">
+      <label class="form-label" for="phone">Phone</label>
+      <input id="phone" class="form-control" type="number" formControlName="phone"
+        [class.is-invalid]="phone?.invalid && (phone?.dirty || phone?.touched)">
+
+      <div class="invalid-feedback" *ngIf="phone?.invalid">
+        Invalid phone number
+      </div>
+    </div>
+  </div>
+
+  <div class="mb-3 col-md-12">
+    <label class="form-label d-block">Gender</label>
+    <div class="form-check form-check-inline">
+      <label class="form-check-label" for="male">Male</label>
+      <input id="male" class="form-check-input" type="radio" value="male" formControlName="gender">
+    </div>
+    <div class="form-check form-check-inline">
+      <label class="form-check-label" for="female">Female</label>
+      <input id="female" class="form-check-input" type="radio" value="female" formControlName="gender">
+
+      <div class="invalid-feedback" *ngIf="phone?.invalid">
+        Invalid gender
+      </div>
+    </div>
+  </div>
+
+  <button class="btn btn-primary w-50 mx-auto" [disabled]="!registerForm.valid" type="submit">Submit</button>
+</form>
+
+<p class="mt-3">{{ registerForm.value | json }}</p>
+<p>{{ registerForm.status }}</p>
+<p>{{ registerForm.get('email')?.errors | json }}</p>
+<p>{{ registerForm.hasError('notSame') }}</p>
+<p>{{ age?.invalid }}</p>
